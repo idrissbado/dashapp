@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<style>
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: lightgray;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a, .dropbtn {
+        display: inline-block;
+        color: blue;
+        font-size:20px;
+        text-align: center;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+    .active{
+        background-color: gray;
+        color: white;
+    }
+    li a:hover , .dropdown:hover .dropbtn{
+        background-color: orange;
+        color: white;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: lightblue;
+        min-width: 160px;
+        box-shadow: 5px 8px 10px 0px black;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: gray;
+        color:white;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    h1,h2,h3{
+        text-align:center;
+        color: green;
+    }
+    table, th, td {
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<title> MAJOR CROP BY FARMER </title>
+</head>
+<body style="background-color:powderblue;">
+<h1> MAJOR CROP BY FARMER </h1>
+<p id = "GFG_UP" style =
+        "font-size: 15px; font-weight: bold;">
+</p>
+<p id = "GFG_UPP" style =
+        "font-size: 15px; font-weight: bold;">
+</p>
+<button onclick = "GFG_FUN()">
+    Generate Major crop Table
+</button>
+<button onclick = "GF_FUN()">
+    Generate soy
+</button>
+<br><br>
+<table id="table" align = "center" border="1px"></table>
+
+<script>
+    var el_up = document.getElementById("GFG_UP");
+
+    var list =
+
+        [
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'CHEREPONI',
+                number: 787
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'SABOBA',
+                number: 667
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'SAVELUGU NANTON',
+                number: 276
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'KARAGA',
+                number: 245
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'GUSHEGU',
+                number: 201
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN REGION',
+                District: 'EAST MAMPRUSI',
+                number: 51
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'YENDI MUNICIPAL',
+                number: 49
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN REGION',
+                District: 'BUNKPRUGU YUNYOO',
+                number: 42
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN REGION',
+                District: 'SABOBA',
+                number: 30
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'NANUMBA NORTH',
+                number: 20
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'BAWKU WEST',
+                number: 18
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'KUMBUNGU',
+                number: 12
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'BUNKPRUGU YUNYOO',
+                number: 10
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'BUILSA SOUTH',
+                number: 10
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'EAST MAMPRUSI',
+                number: 9
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'WEST GONJA',
+                number: 8
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'TOLON',
+                number: 7
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'BUILSA NORTH',
+                number: 5
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'EAST GONJA',
+                number: 4
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'SANG',
+                number: 3
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'ZABZUGU',
+                number: 3
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'BOLGA MUNICIPAL',
+                number: 3
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'TAMALE METROPOLITAN',
+                number: 2
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                District: 'CENTRAL GONJA',
+                number: 1
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'BINDURI',
+                number: 1
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'GARU TEMPANE',
+                number: 1
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'KASSENA NANKANA WEST',
+                number: 1
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                District: 'PUSIGA',
+                number: 1
+            }
+        ]
+
+
+    ;
+
+    el_up.innerHTML = " "
+        + ".<br><br>"
+    ;
+
+    function GFG_FUN() {
+        var cols = [];
+
+        for (var i = 0; i < list.length; i++) {
+            for (var k in list[i]) {
+                if (cols.indexOf(k) === -1) {
+
+                    // Push all keys to the array
+                    cols.push(k);
+                }
+            }
+        }
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Create table row tr element of a table
+        var tr = table.insertRow(-1);
+
+        for (var i = 0; i < cols.length; i++) {
+
+            // Create the table header th element
+            var theader = document.createElement("th");
+            theader.innerHTML = cols[i];
+
+            // Append columnName to the table row
+            tr.appendChild(theader);
+        }
+
+        // Adding the data to the table
+        for (var i = 0; i < list.length; i++) {
+
+            // Create a new row
+            trow = table.insertRow(-1);
+            for (var j = 0; j < cols.length; j++) {
+                var cell = trow.insertCell(-1);
+
+                // Inserting the cell at particular place
+                cell.innerHTML = list[i][cols[j]];
+            }
+        }
+
+        // Add the newly created table containing json data
+        var el = document.getElementById("table");
+        el.innerHTML = "";
+        el.appendChild(table);
+    }
+    var el_upp= document.getElementById("GFG_UPP");
+
+    var list2 =
+        [
+            {
+                'Major Crop': 'MAIZE',
+                Region: 'NORTHERN',
+                number: 6606,
+                pourcentage: 23.79768723657192
+            },
+            {
+                'Major Crop': 'MAIZE',
+                Region: 'NORTHERN REGION',
+                number: 543,
+                pourcentage: 1.956122338700962
+            },
+            {
+                'Major Crop': 'MAIZE',
+                Region: 'UPPER EAST',
+                number: 3807,
+                pourcentage: 13.71447098238409
+            },
+            {
+                'Major Crop': 'MAIZE',
+                Region: 'Upper West',
+                number: 8547,
+                pourcentage: 30.79001404949746
+            },
+            {
+                'Major Crop': 'RICE',
+                Region: 'NORTHERN',
+                number: 650,
+                pourcentage: 2.341582910047192
+            },
+            {
+                'Major Crop': 'RICE',
+                Region: 'NORTHERN REGION',
+                number: 17,
+                pourcentage: 0.06124139918584964
+            },
+            {
+                'Major Crop': 'RICE',
+                Region: 'UPPER EAST',
+                number: 1934,
+                pourcentage: 6.967109766201952
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN',
+                number: 2304,
+                pourcentage: 8.300010807305739
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'NORTHERN REGION',
+                number: 123,
+                pourcentage: 0.4430995352858532
+            },
+            {
+                'Major Crop': 'SOYA',
+                Region: 'UPPER EAST',
+                number: 40,
+                pourcentage: 0.144097409849058
+            },
+            {
+                'Major Crop': 'SOYBEAN',
+                Region: 'NORTHERN',
+                number: 2869,
+                pourcentage: 10.33538672142368
+            },
+            {
+                'Major Crop': 'SOYBEAN',
+                Region: 'NORTHERN REGION',
+                number: 319,
+                pourcentage: 1.149176843546237
+            }
+        ]
+
+
+
+    ;
+
+    el_upp.innerHTML = "  "
+        + ".<br><br>"
+    ;
+
+    function GF_FUN() {
+        var cols = [];
+
+        for (var i = 0; i < list2.length; i++) {
+            for (var k in list2[i]) {
+                if (cols.indexOf(k) === -1) {
+
+                    // Push all keys to the array
+                    cols.push(k);
+                }
+            }
+        }
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Create table row tr element of a table
+        var tr = table.insertRow(-1);
+
+        for (var i = 0; i < cols.length; i++) {
+
+            // Create the table header th element
+            var theader = document.createElement("th");
+            theader.innerHTML = cols[i];
+
+            // Append columnName to the table row
+            tr.appendChild(theader);
+        }
+
+        // Adding the data to the table
+        for (var i = 0; i < list2.length; i++) {
+
+            // Create a new row
+            trow = table.insertRow(-1);
+            for (var j = 0; j < cols.length; j++) {
+                var cell = trow.insertCell(-1);
+
+                // Inserting the cell at particular place
+                cell.innerHTML = list2[i][cols[j]];
+            }
+        }
+
+        // Add the newly created table containing json data
+        var ell = document.getElementById("table");
+        ell.innerHTML = "";
+        ell.appendChild(table);
+    }
+</script>
+
+</body>
+</html>

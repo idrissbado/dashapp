@@ -1,0 +1,472 @@
+<html>
+<head>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+
+<script>
+
+    anychart.onDocumentReady(function () {
+        // variable to help us define screen proportions
+        var screenRatio;
+
+        // data for the charts
+        var drinksData = anychart.data.set([
+            [ 'MAIZE',  134243.4465028652 ],
+            ['RICE',  28984.8825653505 ],
+            [ 'SOYA',  12356.60907449564 ],
+            ['SOYBEAN', 16832.28275374833 ]
+
+    ]);
+
+        var previousYearsData = anychart.data.set([
+
+                [
+
+                    'NORTHERN',
+
+                     14.49619943081523
+                ],
+                [
+
+                     'NORTHERN REGION',
+
+                     3.609640116718902
+                ],
+                [
+
+                     'UPPER EAST',
+
+                     9.351921899203862
+                ]
+            ])
+        ;
+        var datum = anychart.data.set([
+            [
+
+                'NORTHERN',
+                30.2784682445333
+            ],
+            [
+
+                'UPPER EAST',
+                 11.47375625923124
+    ],
+        [
+
+            'Upper West',
+            19.47836737634641
+        ]
+
+
+        ]);
+        var datm = anychart.data.set([
+            [
+
+                'NADOWLI EAST',
+
+                0.007204870492452898
+            ],
+            [
+
+                'TALENSI NABDAM',
+
+                0.02521704672358514
+            ],
+            [
+
+                 'SANG',
+
+                0.07925357541698189
+        ],
+            [
+
+                'NADOWLI-KALEO',
+                0.09006088115566123
+            ],
+                [
+
+                    'ZABZUGU',
+
+                    0.1116754926330199
+                ],
+                [
+
+                    'KALEO-NADOWLI',
+                    0.1188803631254728
+                ],
+                [
+
+                    'SISSALA WEST',
+
+                    0.1188803631254728
+                ],
+                [
+
+                    'MION',
+
+                    0.1476998450952844
+                ],
+                [
+                    'GARU TEMPANE',
+
+                    0.1549047155877373
+                ],
+                [
+
+                    'MAMPRUGU MAOGDURI',
+
+                    0.1549047155877373
+                ],
+                [
+
+                    'TAMALE METROPOLITAN',
+
+                     0.1549047155877373
+        ],
+            [
+                'LAWRA',
+                0.1729168918188695
+            ],
+                [
+                    'KUMBUNGU',
+                    0.1945315032962283
+                ],
+                [
+                    'CENTRAL GONJA',
+                    0.2305558557584927
+                ],
+                [
+                    'PUSIGA',
+         0.2665802082207572
+        ],
+            [
+                'JIRAPA',
+                0.3134118664217011
+            ],
+                [
+                    'BUNKPRUGU YUNYOO',
+                    0.3458337836377391
+                ],
+                [
+                    'NANUMBA NORTH',
+                    0.353038654130192
+                ],
+                [
+                    'sissala west',
+                    0.3674483951150978
+                ],
+                [
+                    'EAST GONJA',
+                    0.4358946647934003
+                ],
+                [
+                    'WA MUNICIPAL',
+                    0.4683165820094384
+                ],
+                [
+                    'KPANDAI',
+                    0.4719190172556648
+                ],
+                [
+                    'Sissala West',
+                    0.569184768903779
+                ],
+                [
+                    'YENDI MUNICIPAL',
+                    0.5871969451349112
+                ],
+                [
+                    'LAMBUSSIE-KARNI',
+                    0.6952700025217047
+                ],
+                [
+                    'BINDURI',
+                    0.6988724377679312
+                ],
+                [
+                    'KASSENA NANKANA WEST',
+                    0.7204870492452898
+                ],
+                [
+                    'SAVELUGU NANTON',
+                    0.7637162722000072
+                ],
+                [
+                    'EAST MAMPRUSI',
+                    0.9942721279585
+                ],
+                [
+                    'TOLON',
+                    1.008681868943406
+                ],
+                [
+                    'BUILSA SOUTH',
+                    1.084333009114161
+                ],
+                [
+                    'BOLGA MUNICIPAL',
+                    1.10594762059152
+                ],
+                [
+                    'SAWLA TUNA KALBA',
+                    1.145574408300011
+                ],
+                [
+                    'SISSALA EAST',
+                    1.221225548470766
+                ],
+                [
+                    'GUSHEGU',
+                    1.304081559133975
+                ],
+                [
+                    'WA WEST',
+                    1.322093735365107
+                ],
+                [
+                    'BUILSA NORTH',
+                    1.343708346842466
+        ],
+        [
+            'SABOBA',
+            1.606686119816996
+        ],
+        [
+            'WEST GONJA',
+            1.678734824741525
+        ],
+        [
+            'KASSENA NANKANA MUNICIPAL',
+            1.696747000972658
+        ],
+        [
+            'Daffiama/Busie/Issa',
+            1.82643466983681
+        ],
+        [
+            'KARAGA',
+            2.172268453474549
+        ],
+        [
+            'BAWKU WEST',
+            2.183075759213228
+        ],
+        [
+            'WA EAST',
+            2.910767678950971
+        ],
+        [
+            'CHEREPONI',
+            5.34601390540005
+        ]
+    ]
+
+
+
+
+    );
+        var drinksdatum = anychart.data.set([[
+
+            'NORTHERN ',
+            6606
+
+        ],
+            [
+
+                'NORTHERN REGION',
+                543
+
+            ],
+            [
+
+                'UPPER EAST',
+                3807
+
+            ],
+            [
+
+                'Upper West',
+                8547
+
+            ]
+
+        ])
+        var drinksDataH = anychart.data.set([
+            [
+
+                'Upper West',
+                8547,
+
+            ],
+            [
+
+                'NORTHERN',
+                650
+
+            ],
+            ['NORTHERN REGION',
+                17  ],
+            [
+                'UPPER EAST',
+                1934,
+
+            ]
+
+
+        ]);
+
+        // set default using the theme
+        var dashboardTheme = {
+            chart: {
+                margin: 0,
+                padding: [15, 30, 15, 15],
+                title: {
+                    enabled: true,
+                    fontColor: '#212121',
+                    fontSize: 13,
+                    padding: [0, 0, 10, 0]
+                },
+                defaultXAxisSettings: {
+                    title: {
+                        enabled: false,
+                        fontSize: 12,
+                        margin: 0,
+                        padding: [3, 0, 0, 0]
+                    },
+                    labels: { fontSize: 11, padding: [0, 0, 0, 0] }
+                },
+                defaultYAxisSettings: {
+                    title: {
+                        enabled: true,
+                        fontSize: 12,
+                        margin: 0,
+                        padding: [0, 0, 3, 0]
+                    },
+                    labels: { fontSize: 11, padding: [0, 0, 0, 0] }
+                }
+            }
+        };
+        // apply the theme
+        anychart.theme(dashboardTheme);
+
+        // create stage for all charts
+        var stage = acgraph.create('container');
+
+        var title = anychart.standalones.title();
+        title.text('VISUALISATION.');
+        title.container(stage).draw();
+        var pieChart = anychart.bar(drinksData);
+        pieChart.title('Volume produced of CROP');
+        pieChart.legend().enabled(false);
+        pieChart.labels().position('outside').fontSize(10).format('{%x}');
+        pieChart.tooltip().format('{%Value} orders');
+        pieChart.container(stage).draw();
+
+        var barChart = anychart.bar(previousYearsData);
+        barChart.title('Female percentage by Region ');
+        barChart.bar(previousYearsData.mapAs({ value: 3, x: 0 })).name('Male');
+        barChart.bar(previousYearsData.mapAs({ value: 2, x: 0 })).name('Female');
+        barChart.yAxis().title('GENDER INFORMATION');
+        barChart.container(stage).draw();
+
+        var scatterChart = anychart.bar(datum);
+        scatterChart.title('MALE percentage by region ');
+        scatterChart.bubble(
+           datum.mapAs({
+                value: 4,
+                x: 5,
+                size: 1,
+                name: 0
+            })
+        );
+        scatterChart.tooltip().titleFormat('{%Name}');
+        scatterChart
+            .tooltip()
+            ;
+        scatterChart.yScale().minimum(0).maximum(15);
+        scatterChart.container(stage).draw();
+
+        var lineChart = anychart.pie(
+            datm
+        );
+        lineChart.title('Gender by District');
+        lineChart.container(stage).draw();
+
+        var areaChart = anychart.bar(
+            drinksdatum
+        );
+        areaChart.title('MAIZE CROP ');
+
+        areaChart.container(stage).draw();
+
+        var columnChart = anychart.bar(
+            drinksDataH
+        );
+        columnChart.title('Rice CROP' );
+        columnChart.yAxis().title('Turnout');
+        columnChart
+            .column(previousYearsData.mapAs({ value: 3, x: 0 }))
+            .name('Male');
+        columnChart
+            .column(previousYearsData.mapAs({ value: 4, x: 0 }))
+            .name('Female');
+        columnChart.yAxis().title('Turnout');
+        columnChart.container(stage).draw();
+
+        // chart placement
+        function configureChartsSize() {
+            if (window.innerWidth > 768) {
+                screenRatio = 'wide';
+                pieChart.bounds(0, 30, '33.3%', '47%');
+                barChart.bounds('33.3%', 30, '33.3%', '47%');
+                scatterChart.bounds('66.6%', 30, '33.3%', '47%');
+                lineChart.bounds(0, '52%', '33.3%', '47%');
+                areaChart.bounds('33.3%', '52%', '33.3%', '47%');
+                columnChart.bounds('66.6%', '52%', '33.3%', '47%');
+            } else {
+                screenRatio = 'slim';
+                pieChart.bounds(0, 30, '50%', '33.3%');
+                barChart.bounds('50%', 30, '50%', '33.3%');
+                scatterChart.bounds(0, '33.3%', '50%', '33.3%');
+                lineChart.bounds('50%', '33.3%', '50%', '33.3%');
+                areaChart.bounds(0, '66.6%', '50%', '33.3%');
+                columnChart.bounds('50%', '66.6%', '50%', '33.3%');
+            }
+        }
+
+        configureChartsSize();
+
+        // On resize change layout to mobile version or otherwise
+        window.onresize = function () {
+            if (screenRatio === 'slim' && window.innerWidth > 767) {
+                configureChartsSize('wide');
+            } else if (window.innerWidth <= 767) {
+                configureChartsSize('slim');
+            }
+            title.parentBounds(0, 0, stage.width(), 130).draw();
+        };
+    });
+
+</script>
+</body>
+</html>

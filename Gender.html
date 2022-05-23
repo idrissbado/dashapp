@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightgray;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a, .dropbtn {
+            display: inline-block;
+            color: blue;
+            font-size:20px;
+            text-align: center;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .active{
+            background-color: gray;
+            color: white;
+        }
+        li a:hover , .dropdown:hover .dropbtn{
+            background-color: orange;
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: lightblue;
+            min-width: 160px;
+            box-shadow: 5px 8px 10px 0px black;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: gray;
+            color:white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        h1,h2,h3{
+            text-align:center;
+            color: green;
+        }
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <title> THE PROPORTION OF MEN AND WOMEN  REGISTRED BY REGION </title>
+</head>
+<body>
+<h1> THE PROPORTION OF MEN AND WOMEN  REGISTRED BY REGION </h1>
+<p id = "GFG_UP" style =
+        "font-size: 15px; font-weight: bold;">
+</p>
+<p id = "GFG_UPP" style =
+        "font-size: 15px; font-weight: bold;">
+</p>
+<button onclick = "GFG_FUN()">
+    Gender proportion
+</button>
+<button onclick = "GF_FUN()">
+    Female proportion by District
+</button>
+<br><br>
+<table id="table" align = "center" border="1px"></table>
+
+<script>
+    var el_up = document.getElementById("GFG_UP");
+
+    var list =
+
+        [
+            {
+                Gender: 'FEMALE',
+                Region: 'NORTHERN',
+                number: 4024,
+                pourcentage: 14.49619943081523
+            },
+            {
+                Gender: 'FEMALE',
+                Region: 'NORTHERN REGION',
+                number: 1002,
+                pourcentage: 3.609640116718902
+            },
+            {
+                Gender: 'FEMALE',
+                Region: 'UPPER EAST',
+                number: 2596,
+                pourcentage: 9.351921899203862
+            },
+            {
+                Gender: 'FEMALE',
+                Region: 'Upper West',
+                number: 3140,
+                pourcentage: 11.31164667315105
+            },
+            {
+                Gender: 'MALE',
+                Region: 'NORTHERN',
+                number: 8405,
+                pourcentage: 30.2784682445333
+            },
+            {
+                Gender: 'MALE',
+                Region: 'UPPER EAST',
+                number: 3185,
+                pourcentage: 11.47375625923124
+            },
+            {
+                Gender: 'MALE',
+                Region: 'Upper West',
+                number: 5407,
+                pourcentage: 19.47836737634641
+            }
+        ]
+    ;
+
+    el_up.innerHTML = " "
+        + ".<br><br>"
+        ;
+
+    function GFG_FUN() {
+        var cols = [];
+
+        for (var i = 0; i < list.length; i++) {
+            for (var k in list[i]) {
+                if (cols.indexOf(k) === -1) {
+
+                    // Push all keys to the array
+                    cols.push(k);
+                }
+            }
+        }
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Create table row tr element of a table
+        var tr = table.insertRow(-1);
+
+        for (var i = 0; i < cols.length; i++) {
+
+            // Create the table header th element
+            var theader = document.createElement("th");
+            theader.innerHTML = cols[i];
+
+            // Append columnName to the table row
+            tr.appendChild(theader);
+        }
+
+        // Adding the data to the table
+        for (var i = 0; i < list.length; i++) {
+
+            // Create a new row
+            trow = table.insertRow(-1);
+            for (var j = 0; j < cols.length; j++) {
+                var cell = trow.insertCell(-1);
+
+                // Inserting the cell at particular place
+                cell.innerHTML = list[i][cols[j]];
+            }
+        }
+
+        // Add the newly created table containing json data
+        var el = document.getElementById("table");
+        el.innerHTML = "";
+        el.appendChild(table);
+    }
+
+
+    var el_upp = document.getElementById("GFG_UPP");
+
+    var list2 =[
+            {
+                Gender: 'FEMALE',
+                District: 'NADOWLI EAST',
+                number: 2,
+                pourcentage: 0.007204870492452898
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'TALENSI NABDAM',
+                number: 7,
+                pourcentage: 0.02521704672358514
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'SANG',
+                number: 22,
+                pourcentage: 0.07925357541698189
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'NADOWLI-KALEO',
+                number: 25,
+                pourcentage: 0.09006088115566123
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'ZABZUGU',
+                number: 31,
+                pourcentage: 0.1116754926330199
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'KALEO-NADOWLI',
+                number: 33,
+                pourcentage: 0.1188803631254728
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'SISSALA WEST',
+                number: 33,
+                pourcentage: 0.1188803631254728
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'MION',
+                number: 41,
+                pourcentage: 0.1476998450952844
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'GARU TEMPANE',
+                number: 43,
+                pourcentage: 0.1549047155877373
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'MAMPRUGU MAOGDURI',
+                number: 43,
+                pourcentage: 0.1549047155877373
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'TAMALE METROPOLITAN',
+                number: 43,
+                pourcentage: 0.1549047155877373
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'LAWRA',
+                number: 48,
+                pourcentage: 0.1729168918188695
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'KUMBUNGU',
+                number: 54,
+                pourcentage: 0.1945315032962283
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'CENTRAL GONJA',
+                number: 64,
+                pourcentage: 0.2305558557584927
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'PUSIGA',
+                number: 74,
+                pourcentage: 0.2665802082207572
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'JIRAPA',
+                number: 87,
+                pourcentage: 0.3134118664217011
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'BUNKPRUGU YUNYOO',
+                number: 96,
+                pourcentage: 0.3458337836377391
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'NANUMBA NORTH',
+                number: 98,
+                pourcentage: 0.353038654130192
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'sissala west',
+                number: 102,
+                pourcentage: 0.3674483951150978
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'EAST GONJA',
+                number: 121,
+                pourcentage: 0.4358946647934003
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'WA MUNICIPAL',
+                number: 130,
+                pourcentage: 0.4683165820094384
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'KPANDAI',
+                number: 131,
+                pourcentage: 0.4719190172556648
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'Sissala West',
+                number: 158,
+                pourcentage: 0.569184768903779
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'YENDI MUNICIPAL',
+                number: 163,
+                pourcentage: 0.5871969451349112
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'LAMBUSSIE-KARNI',
+                number: 193,
+                pourcentage: 0.6952700025217047
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'BINDURI',
+                number: 194,
+                pourcentage: 0.6988724377679312
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'KASSENA NANKANA WEST',
+                number: 200,
+                pourcentage: 0.7204870492452898
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'SAVELUGU NANTON',
+                number: 212,
+                pourcentage: 0.7637162722000072
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'EAST MAMPRUSI',
+                number: 276,
+                pourcentage: 0.9942721279585
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'TOLON',
+                number: 280,
+                pourcentage: 1.008681868943406
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'BUILSA SOUTH',
+                number: 301,
+                pourcentage: 1.084333009114161
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'BOLGA MUNICIPAL',
+                number: 307,
+                pourcentage: 1.10594762059152
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'SAWLA TUNA KALBA',
+                number: 318,
+                pourcentage: 1.145574408300011
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'SISSALA EAST',
+                number: 339,
+                pourcentage: 1.221225548470766
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'GUSHEGU',
+                number: 362,
+                pourcentage: 1.304081559133975
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'WA WEST',
+                number: 367,
+                pourcentage: 1.322093735365107
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'BUILSA NORTH',
+                number: 373,
+                pourcentage: 1.343708346842466
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'SABOBA',
+                number: 446,
+                pourcentage: 1.606686119816996
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'WEST GONJA',
+                number: 466,
+                pourcentage: 1.678734824741525
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'KASSENA NANKANA MUNICIPAL',
+                number: 471,
+                pourcentage: 1.696747000972658
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'Daffiama/Busie/Issa',
+                number: 507,
+                pourcentage: 1.82643466983681
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'KARAGA',
+                number: 603,
+                pourcentage: 2.172268453474549
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'BAWKU WEST',
+                number: 606,
+                pourcentage: 2.183075759213228
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'WA EAST',
+                number: 808,
+                pourcentage: 2.910767678950971
+            },
+            {
+                Gender: 'FEMALE',
+                District: 'CHEREPONI',
+                number: 1484,
+                pourcentage: 5.34601390540005
+            }
+        ]
+
+
+
+
+    ;
+
+    el_upp.innerHTML = "  "
+        + ".<br><br>"
+    ;
+
+    function GF_FUN() {
+        var cols = [];
+
+        for (var i = 0; i < list2.length; i++) {
+            for (var k in list2[i]) {
+                if (cols.indexOf(k) === -1) {
+
+                    // Push all keys to the array
+                    cols.push(k);
+                }
+            }
+        }
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Create table row tr element of a table
+        var tr = table.insertRow(-1);
+
+        for (var i = 0; i < cols.length; i++) {
+
+            // Create the table header th element
+            var theader = document.createElement("th");
+            theader.innerHTML = cols[i];
+
+            // Append columnName to the table row
+            tr.appendChild(theader);
+        }
+
+        // Adding the data to the table
+        for (var i = 0; i < list2.length; i++) {
+
+            // Create a new row
+            trow = table.insertRow(-1);
+            for (var j = 0; j < cols.length; j++) {
+                var cell = trow.insertCell(-1);
+
+                // Inserting the cell at particular place
+                cell.innerHTML = list2[i][cols[j]];
+            }
+        }
+
+        // Add the newly created table containing json data
+        var el = document.getElementById("table");
+        el.innerHTML = "";
+        el.appendChild(table);
+    }
+
+</script>
+
+</body>
+</html>

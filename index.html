@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: lightgray;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a, .dropbtn {
+            display: inline-block;
+            color: blue;
+            font-size:20px;
+            text-align: center;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .active{
+            background-color: gray;
+            color: white;
+        }
+        li a:hover , .dropdown:hover .dropbtn{
+            background-color: orange;
+            color: white;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: lightblue;
+            min-width: 160px;
+            box-shadow: 5px 8px 10px 0px black;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: gray;
+            color:white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        h1,h2,h3{
+            text-align:center;
+            color: green;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body style="background-color:powderblue;">
+<ul>
+    <li><a class="active" href="#"> <img src="ef4bb3b8.png" alt="Simply Easy Learning" width="200"
+                                                 height="80"></a></li>
+    <li><a href="DATACLEANING.html"> DATACLEANING</a></li>
+    <li><a href="Recommandation.html">  RECOMMANDATION </a></li>
+    <li><a href="Databaseupgrade.html">Database upgrade</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropbtn">DATASUMMARY</a>
+        <div class="dropdown-content">
+            <a href="Gender.html">Gender Targeting  </a>
+
+            <a href="majorcrop.html">Major crop type by Farmer </a>
+
+            <a href="Volumeproduced.html">Volume Produced  </a>
+
+        </div>
+    </li>
+</ul>
+<h1> TECHNOSERVE  DASHBOARD </h1>
+<h2>  </h2>
+<h3></h3>
+
+</body>
+</html>
